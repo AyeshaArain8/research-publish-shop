@@ -10,9 +10,17 @@ export default function Hero() {
           <p className="text-3xl font-black uppercase leading-none text-white/80 md:text-5xl">Karma</p>
         </div>
         <div className="relative z-10 flex min-h-[230px] flex-col items-center justify-center px-5 text-center md:min-h-[382px]">
-          <p className="text-xs font-black uppercase tracking-[0.30em]">We're here to help you!</p>
+          <p className="text-xs font-black uppercase tracking-[0.30em]">
+            We&apos;re here to help you!
+          </p>
+          {/* <p className="text-xs font-black uppercase tracking-[0.30em]">We're here to help you!</p> */}
           <h1 className="mt-2 text-[42px] font-black uppercase leading-none md:text-[58px]">Shop</h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 md:text-xl">"Interested in chatting? We look forward to hearing from you!<br />Feel free to schedule a free demo today."</p>
+          {/* <p className="mt-5 max-w-2xl text-base leading-7 md:text-xl">"Interested in chatting? We look forward to hearing from you!<br />Feel free to schedule a free demo today."</p> */}
+          <p className="mt-5 max-w-2xl text-base leading-7 md:text-xl">
+            &quot;Interested in chatting? We look forward to hearing from you!
+            <br />
+            Feel free to schedule a free demo today.&quot;
+          </p>
           <button className="mt-7 rounded bg-[#bd2f89] px-10 py-4 text-sm font-bold">Shop Now</button>
           <span className="mt-3 text-[10px] text-white/80">No credit card required</span>
         </div>

@@ -75,10 +75,11 @@ export default function Slider({ title, books = [], id }) {
 
         <Swiper
           modules={[Navigation]}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
+          navigation={true}
+          // navigation={{
+          //   prevEl: prevRef.current,
+          //   nextEl: nextRef.current,
+          // }}
           onBeforeInit={(swiper) => {
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
