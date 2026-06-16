@@ -48,28 +48,29 @@ export default function Slider({ title, books = [], id }) {
   const nextRef = useRef(null);
 
   return (
-    <section className="border-b border-[#dddddd] py-7 first:pt-0">
+    <section className="border-b border-[#dddddd] py-7 first:pt-0 overflow-hidden">
       <h2 className="mb-6 text-2xl font-semibold text-[#111827] md:text-[28px]">
         {title}
       </h2>
 
-      <div className="relative">
-        {/* Prev Button */}
+      <div className="relative w-full overflow-hidden px-2 sm:px-4">
+
+        {/* PREV BUTTON */}
         <button
           ref={prevRef}
-          className="absolute -left-2 top-20 z-10 grid h-7 w-7 place-items-center rounded bg-white text-2xl shadow ring-1 ring-black/10 md:-left-10"
-          aria-label={`Previous ${title}`}
+          className="absolute left-1 top-1/2 z-50 -translate-y-1/2 bg-white shadow-md p-2 rounded-full"
+          aria-label="Previous"
         >
-          &lsaquo;
+          ‹
         </button>
 
-        {/* Next Button */}
+        {/* NEXT BUTTON */}
         <button
           ref={nextRef}
-          className="absolute -right-2 top-20 z-10 grid h-7 w-7 place-items-center rounded bg-white text-2xl shadow ring-1 ring-black/10 md:-right-10"
-          aria-label={`Next ${title}`}
+          className="absolute right-1 top-1/2 z-50 -translate-y-1/2 bg-white shadow-md p-2 rounded-full"
+          aria-label="Next"
         >
-          &rsaquo;
+          ›
         </button>
 
         <Swiper
@@ -82,22 +83,29 @@ export default function Slider({ title, books = [], id }) {
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
           }}
-          slidesPerView={2.05}
-          spaceBetween={22}
+          onSwiper={(swiper) => {
+            setTimeout(() => {
+              swiper.navigation.destroy();
+              swiper.navigation.init();
+              swiper.navigation.update();
+            });
+          }}
+          slidesPerView={1.6}
+          spaceBetween={18}
           watchOverflow={true}
           breakpoints={{
-            520: { slidesPerView: 3.1 },
-            768: { slidesPerView: 4.2, spaceBetween: 30 },
-            1180: { slidesPerView: 5.6, spaceBetween: 36 },
-            1450: { slidesPerView: 6.05, spaceBetween: 42 },
+            520: { slidesPerView: 2.5, spaceBetween: 20 },
+            768: { slidesPerView: 4, spaceBetween: 25 },
+            1180: { slidesPerView: 5.5, spaceBetween: 30 },
+            1450: { slidesPerView: 6 },
           }}
         >
           {books.map((book, index) => (
             <SwiperSlide key={book.id || `${book.title}-${index}`}>
-              <article className="w-[120px] sm:w-[134px] xl:w-[150px]">
+              <article className="w-full max-w-[120px] sm:max-w-[134px] xl:max-w-[150px]">
                 <BookCover title={book.title} index={index} />
 
-                <h3 className="mt-3 min-h-[2rem] text-[11px] font-black leading-tight xl:text-xs">
+                <h3 className="mt-3 min-h-[2rem] text-[11px] font-black leading-tight break-words xl:text-xs">
                   {book.title}
                 </h3>
 
